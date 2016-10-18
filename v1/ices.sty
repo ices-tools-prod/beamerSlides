@@ -4,6 +4,7 @@
 % Version: 1.1
 % Purpose: Apply ICES format to Beamer slideshows
 % History: [1.0] 27 Jul 2016 Arni Magnusson created
+%          [1.1] 25 Aug 2016 Arni Magnusson added \comment
 
 \usepackage{listings}\lstset{basicstyle=\ttfamily,literate={~}{$\sim$}{2}}
 
@@ -38,3 +39,7 @@
 \newcommand\textorange[1]{\textcolor{orange}{#1}}
 \newcommand\textwhite[1]{\textcolor{white}{#1}}
 \newcommand\white{\color{white}}
+
+% 3 Other commands
+
+\newcommand\comment[1]{\quad\textgreen{\textit{\small #1}}}
