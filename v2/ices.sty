@@ -1,75 +1,88 @@
+% LaTeX package to apply ICES slide format
+
+% History
+% 2.1 18 Oct 2016 AM added user variables \titlepos, \authorpos, \datepos,
+%                 renamed directory images->figs, hardwired graphics path,
+%                 increased bitmap quality
+% 2.0 20 Sep 2016 CPM added background and title page bitmaps, wide aspect ratio
+% 1.1 25 Aug 2016 AM added \comment
+% 1.0 27 Jul 2016 AM created
+
 \ProvidesPackage{ices}
 
-% Package: ices
-% Version: 1.1
-% Purpose: Apply ICES format to Beamer slideshows
-% History: [1.0] 27 Jul 2016 Arni Magnusson created
-%          [1.1] 25 Aug 2016 Arni Magnusson added \comment
-%          [2.0] 20 Sep 2016 Colin Millar added background and title page
-%                            bitmaps, changed aspect ratio
+% --------------
+% 1 Dependencies
+% --------------
 
-\usepackage{listings}\lstset{basicstyle=\ttfamily,literate={~}{$\sim$}{2}}
+% 1.1 Packages
+\usepackage{listings}
 
+% 1.2 Background and title page
+\graphicspath{{figs/}}
+
+% ----------
+% 2 Settings
+% ----------
+
+% 2.1 Character
 \frenchspacing
+\lstset{basicstyle=\ttfamily,literate={~}{$\sim$}{2}}
 
-% 0 Theme definitions
+% 2.2 Color
+\definecolor{blue}{rgb}{0.0,0.3,0.6}
+\definecolor{darkblue}{rgb}{0.0,0.2,0.4}
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+\definecolor{green}{rgb}{0.3,0.5,0.5}
+\definecolor{orange}{rgb}{0.9,0.3,0.2}
+\setbeamercolor{palette primary}{fg=white,bg=darkblue}
+\setbeamercolor{item}{fg=orange,bg=white}
 
+% 2.3 Footer
+\setbeamertemplate{navigation symbols}{}
+
+% 2.4 Background
 \setbeamertemplate{background}{
-  \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{images/template-1.png}
-  %\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{images/template-2.png}
-  %\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{images/template-3.png}
+  \includegraphics[width=\paperwidth]{ices-background}
 }
-\beamertemplatenavigationsymbolsempty
 
-\setbeamerfont{title}{series=\bfseries}
-\setbeamerfont{author}{size=\scriptsize,series=\bfseries}
-\setbeamerfont{date}{size=\scriptsize,series=\bfseries}
+% 2.5 Title page
+\newcommand\titlepos{62}
+\newcommand\authorpos{10}
+\newcommand\datepos{-36}
 \setbeamercolor{title}{fg=white}
 \setbeamercolor{author}{fg=white}
 \setbeamercolor{date}{fg=white}
-
-
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{author}{size=\scriptsize,series=\bfseries}
+\setbeamerfont{date}{size=\scriptsize,series=\bfseries}
 \setbeamertemplate{title page}{
   \begin{picture}(0,0)
-    \put(-28.5,-140){%
-      \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{images/titlepage.png}
+    \put(-32,-147){
+      \includegraphics[width=\paperwidth]{ices-titlepage}
     }
-
-  \put(0,-50){%
-      \begin{minipage}[b][45mm][t]{226mm}
-        \usebeamerfont{title}{\inserttitle\par}
+    \put(-3,\titlepos){
+      \begin{minipage}{\textwidth}
+        \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle
       \end{minipage}
     }
-
-  \put(0,-100){%
-      \begin{minipage}[b][45mm][t]{226mm}
-        \usebeamerfont{author}{\insertauthor\par}
+    \put(-3,\authorpos){
+      \begin{minipage}{\textwidth}
+        \usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor
       \end{minipage}
     }
-
-  \put(0,-150){%
-      \begin{minipage}[b][45mm][t]{226mm}
-        \usebeamerfont{date}{\insertdate\par}
+    \put(-3,\datepos){
+      \begin{minipage}{\textwidth}
+        \usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate
       \end{minipage}
     }
-
   \end{picture}
 }
 
-% 1 Color definitions
+% ----------
+% 3 Commands
+% ----------
 
-\definecolor{blue}{rgb}{0.0,0.3,0.6}
-\definecolor{darkblue}{rgb}{0.0,0.2,0.4}
-\definecolor{green}{rgb}{0.3,0.5,0.5}
-\definecolor{orange}{rgb}{0.9,0.3,0.2}
-\definecolor{gray}{rgb}{0.7,0.7,0.7}
-\setbeamercolor{palette primary}{fg=white,bg=darkblue}
-\setbeamercolor{item}{fg=orange,bg=white}
-\setbeamertemplate{footline}{}
-
-
-% 2 Color commands
-
+% 3.1 Color
 \newcommand\black{\color{black}}
 \newcommand\blue{\color{blue}}
 \newcommand\darkblue{\color{darkblue}}
@@ -85,6 +98,5 @@
 \newcommand\textwhite[1]{\textcolor{white}{#1}}
 \newcommand\white{\color{white}}
 
-% 3 Other commands
-
+% 3.2 Special
 \newcommand\comment[1]{\quad\textgreen{\textit{\small #1}}}
