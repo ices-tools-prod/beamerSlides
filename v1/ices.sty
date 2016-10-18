@@ -1,0 +1,40 @@
+\ProvidesPackage{ices}
+
+% Package: ices
+% Version: 1.1
+% Purpose: Apply ICES format to Beamer slideshows
+% History: [1.0] 27 Jul 2016 Arni Magnusson created
+
+\usepackage{listings}\lstset{basicstyle=\ttfamily,literate={~}{$\sim$}{2}}
+
+\frenchspacing
+
+% 1 Color definitions
+
+\usetheme{Warsaw}
+\definecolor{blue}{rgb}{0.0,0.3,0.6}
+\definecolor{darkblue}{rgb}{0.0,0.2,0.4}
+\definecolor{green}{rgb}{0.3,0.5,0.5}
+\definecolor{orange}{rgb}{0.9,0.3,0.2}
+\definecolor{gray}{rgb}{0.7,0.7,0.7}
+\setbeamercolor{palette primary}{fg=white,bg=darkblue}
+\setbeamercolor{item}{fg=orange,bg=white}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{navigation symbols}{}
+
+% 2 Color commands
+
+\newcommand\black{\color{black}}
+\newcommand\blue{\color{blue}}
+\newcommand\darkblue{\color{darkblue}}
+\newcommand\gray{\color{gray}}
+\newcommand\green{\color{green}}
+\newcommand\orange{\color{orange}}
+\newcommand\textblack[1]{\textcolor{black}{#1}}
+\newcommand\textblue[1]{\textcolor{blue}{#1}}
+\newcommand\textdarkblue[1]{\textcolor{darkblue}{#1}}
+\newcommand\textgray[1]{\textcolor{gray}{#1}}
+\newcommand\textgreen[1]{\textcolor{green}{#1}}
+\newcommand\textorange[1]{\textcolor{orange}{#1}}
+\newcommand\textwhite[1]{\textcolor{white}{#1}}
+\newcommand\white{\color{white}}
